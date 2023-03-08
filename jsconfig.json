@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@api/*": ["netlify/functions/utils/*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "shopify-next-netlify",
+  "version": "0.5.0",
+  "private": true,
+  "scripts": {
+    "start": "netlify dev",
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "^12.3.4",
+    "node-fetch": "^2.6.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
