@@ -97,8 +97,6 @@ export const MessageBody = ({ product }) => {
       },
     ]);
 
-    setLoading(true);
-
     const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
       body: JSON.stringify({ workoutType, product }),
@@ -115,7 +113,6 @@ export const MessageBody = ({ product }) => {
       },
     ]);
 
-    setLoading(false);
     setDisabled(false);
     console.log(
       '🚀 ~ file: MessageBody.js:119 ~ handleSubmit ~ workoutPlan:',
