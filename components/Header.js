@@ -5,7 +5,7 @@ export default function Header() {
     <header className="app-header">
       <h1>
         <Link href="/">
-          <a>Shoperoni</a>
+          <a>Life Fitness</a>
         </Link>
       </h1>
       <nav className="main-nav">
@@ -15,15 +15,6 @@ export default function Header() {
               <a>All Products</a>
             </Link>
           </li>
-          {/* <li className="main-nav-item">
-            <Link href="/cheeses"><a>Cheeses</a></Link>
-          </li>
-          <li className="main-nav-item">
-            <Link href="/meats"><a>Meats</a></Link>
-          </li>
-          <li className="main-nav-item">
-            <Link href="/boards"><a>Boards</a></Link>
-          </li> */}
           <li className="main-nav-item">
             <Link href="/cart">
               <a className="cart cartLink">Shopping Cart</a>
