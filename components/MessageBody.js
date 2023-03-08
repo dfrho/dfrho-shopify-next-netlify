@@ -75,8 +75,8 @@ const BarContainer = styled.div`
 export const MessageBody = ({ product }) => {
   const [message, setMessage] = useState({});
   const [workoutPlan, setWorkoutPlan] = useState({});
-  const [loading, setLoading] = useState(false);
   const [workoutType, setWorkoutType] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const handleSelectChange = (event) => {
     setWorkoutType(event.target.value);
@@ -87,6 +87,7 @@ export const MessageBody = ({ product }) => {
   };
 
   const handleSubmit = async (message) => {
+    setDisabled(true);
     setMessage(() => [
       {
         text: message
@@ -115,6 +116,7 @@ export const MessageBody = ({ product }) => {
     ]);
 
     setLoading(false);
+    setDisabled(false);
     console.log(
       '🚀 ~ file: MessageBody.js:119 ~ handleSubmit ~ workoutPlan:',
       workoutPlan
