@@ -6,10 +6,6 @@ import Footer from '@components/Footer';
 import { getProductList } from 'netlify/functions/utils/getProductList.js';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 import searchClient from '../algolia';
-console.log('🚀 ~ file: index.js:9 ~ searchClient:', searchClient);
-
-const index = searchClient.initIndex('algolia-index');
-console.log('🚀 ~ file: index.js:12 ~ index:', index);
 
 function Hit({ hit }) {
   return <HitListing hit={hit} />;
