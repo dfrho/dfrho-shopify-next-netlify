@@ -6,19 +6,16 @@ import { getProductList } from 'netlify/functions/utils/getProductList.js';
 import algoliasearch from 'algoliasearch';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 
+const algoliaSearchApiKey = process.env.ALGOLIA_SEARCH_API_KEY;
 console.log(
-  '🚀 ~ file: index.js:11 ~ process.env.ALGOLIA_APP_ID:',
-  process.env.ALGOLIA_APP_ID
+  '🚀 ~ file: index.js:10 ~ algoliaSearchApiKey:',
+  algoliaSearchApiKey
 );
-console.log(
-  '🚀 ~ file: index.js:13 ~ process.env.ALGOLIA_SEARCH_API_KEY:',
-  process.env.ALGOLIA_SEARCH_API_KEY
-);
-const searchClient = algoliasearch(
-  process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_SEARCH_API_KEY
-);
-const index = searchClient.initIndex(process.env.ALGOLIA_SEARCH_INDEX);
+const appId = process.env.ALGOLIA_APP_ID;
+const searchIndex = process.env.ALGOLIA_SEARCH_INDEX;
+
+const searchClient = algoliasearch(appId, algoliaSearchApiKey);
+const index = searchClient.initIndex(searchIndex);
 console.log('🚀 ~ file: index.js:14 ~ index:', index);
 
 function Hit({ hit }) {
