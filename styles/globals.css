@@ -377,3 +377,9 @@ ol.ais-Hits-list {
   margin: 0;
   padding: 0;
 }
+
+.ais-SearchBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
