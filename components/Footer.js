@@ -4,8 +4,8 @@ export default function Footer() {
       <footer>
         <section className="testimonial">
           <h2>
-            &quot;The interplay of flavors between the cheese, meats and fruits
-            is an absolute delight.&quot;
+            &quot;The flexibility and power of working out from home is nothing
+            short of amazing.&quot;
           </h2>
           <p>Paul Hotcakes</p>
         </section>
