@@ -3,7 +3,7 @@ import ProductListing from '@components/ProductListing';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import { getProductList } from 'netlify/functions/utils/getProductList.js';
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 
 console.log(
