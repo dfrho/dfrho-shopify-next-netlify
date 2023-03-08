@@ -3,14 +3,8 @@ const fetch = require('isomorphic-fetch');
 exports.handler = async (event) => {
   const { workoutType, product } = JSON.parse(event.body);
 
-  const query = `LifeFitness is a leading manufacturer of commercial fitness equipment that can be used at home for Performance, HIIT, Strength, Cardio, and Endurance workouts. For the ${product.title} product, show me a ${workoutType} workout.}`;
-  // const prompt = messageHistory
-  //   .map((message) => {
-  //     return message.sender === 'me'
-  //       ? `Human: ${message.text}`
-  //       : `AI: ${message.text}`;
-  //   })
-  //   .join('\n');
+  const query = `LifeFitness is a leading manufacturer of commercial fitness equipment that can be used at home for Performance, HIIT, Strength, Cardio, and Endurance workouts. For the ${product.title} product, show me a ${workoutType} workout.`;
+  console.log('🚀 ~ file: queryopenai.js:8 ~ exports.handler= ~ query:', query);
 
   const DEFAULT_PARAMS = {
     model: 'text-davinci-002',
@@ -29,6 +23,10 @@ exports.handler = async (event) => {
     },
     body: JSON.stringify(params_),
   };
+  console.log(
+    '🚀 ~ file: queryopenai.js:26 ~ exports.handler= ~ requestOptions:',
+    requestOptions
+  );
 
   const response = await fetch(
     'https://api.openai.com/v1/completions',
