@@ -5,7 +5,6 @@ import Footer from '@components/Footer';
 import { getProductList } from 'netlify/functions/utils/getProductList.js';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
-// require('dotenv').config();
 
 console.log(
   '🚀 ~ file: index.js:11 ~ process.env.ALGOLIA_APP_ID:',
