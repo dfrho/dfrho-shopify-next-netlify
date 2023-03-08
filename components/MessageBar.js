@@ -72,37 +72,35 @@ const SendIcon = styled.img`
   margin-right: 0.5rem;
 `;
 
-const MessageBar = ({ onNewMessage, disabled, handleSelectChange }) => {
-  const [message, dispatchMessage] = useReducer(messageReducer, '');
-
+const MessageBar = ({ disabled, handleSelectChange }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('firing handleSubmit');
 
-    onNewMessage(message);
+    // onNewMessage(message);
   };
 
-  function messageReducer(state, action) {
-    switch (action.type) {
-      case 'set':
-        return action.payload;
-      case 'reset':
-        return '';
-      default:
-        return state;
-    }
-  }
+  //   function messageReducer(state, action) {
+  //     switch (action.type) {
+  //       case 'set':
+  //         return action.payload;
+  //       case 'reset':
+  //         return '';
+  //       default:
+  //         return state;
+  //     }
+  //   }
 
-  const resetMessage = () => {
-    dispatchMessage({ type: 'reset' });
-  };
+  //   const resetMessage = () => {
+  //     dispatchMessage({ type: 'reset' });
+  //   };
 
-  const setMessage = (message) => {
-    dispatchMessage({ type: 'set', payload: message });
-  };
+  //   const setMessage = (message) => {
+  //     dispatchMessage({ type: 'set', payload: message });
+  //   };
 
   //   const textAreaRef = useRef();
-  const buttonRef = useRef(null);
+  //   const buttonRef = useRef(null);
 
   //   const resize = () => {
   //     textAreaRef.current.style.height = 'inherit';
@@ -113,12 +111,12 @@ const MessageBar = ({ onNewMessage, disabled, handleSelectChange }) => {
   //     resize();
   //   }, [message]);
 
-  const tryNewMessage = () => {
-    if (message.trim() !== '') {
-      onNewMessage(message);
-      resetMessage();
-    }
-  };
+  //   const tryNewMessage = () => {
+  //     if (message.trim() !== '') {
+  //       onNewMessage(message);
+  //       resetMessage();
+  //     }
+  //   };
 
   //   const handleKeyDown = (event) => {
   //     if (event.key === 'Enter') {
@@ -132,12 +130,6 @@ const MessageBar = ({ onNewMessage, disabled, handleSelectChange }) => {
   return (
     <MessageBarContainer>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          disabled={disabled}
-        />
         <select onChange={handleSelectChange}>
           <option value="HIIT">HIIT</option>
           <option value="Cardio">Cardio</option>
