@@ -33,7 +33,9 @@ export default function Home({ products }) {
           searchState={searchState}
           onSearchStateChange={handleSearchStateChange}
         >
-          <SearchBox />
+          <div className="ais-SearchBox">
+            <SearchBox />
+          </div>
           <Hits hitComponent={Hit} />
         </InstantSearch>
       </main>
