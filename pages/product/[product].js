@@ -1,14 +1,14 @@
-import Head from "next/head";
-import ProductPageContent from "@components/ProductPageContent";
-import Header from "@components/Header";
-import Footer from "@components/Footer";
-import { getProductList } from "netlify/functions/utils/getProductList";
+import Head from 'next/head';
+import ProductPageContent from '@components/ProductPageContent';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
+import { getProductList } from 'netlify/functions/utils/getProductList';
 
 export default function ProductPage({ product }) {
   return (
     <div className="container">
       <Head>
-        <title>Shoperoni | Buy {product.node.title}</title>
+        <title>Life Fitness | Buy {product.node.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
