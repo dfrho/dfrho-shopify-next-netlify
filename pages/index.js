@@ -1,24 +1,43 @@
-import Head from "next/head";
-import ProductListing from "@components/ProductListing";
-import Header from "@components/Header";
-import Footer from "@components/Footer";
-import { getProductList } from "netlify/functions/utils/getProductList.js";
+import Head from 'next/head';
+import { useState } from 'react';
+import HitListing from '@components/HitListing';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
+import { getProductList } from 'netlify/functions/utils/getProductList.js';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
+import searchClient from '../algolia';
+
+const index = searchClient.initIndex('algolia-index');
+
+function Hit({ hit }) {
+  return <HitListing hit={hit} />;
+}
 
 export default function Home({ products }) {
+  const [searchState, setSearchState] = useState({});
+
+  const handleSearchStateChange = (newSearchState) => {
+    setSearchState(newSearchState);
+  };
+
   return (
     <>
       <Head>
-        <title>Cheese and Meat Shop</title>
+        <title>Life Fitness Shop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
       <main>
-        <ul className="product-grid">
-          {products.map((p, index) => {
-            return <ProductListing key={`product${index}`} product={p.node} />;
-          })}
-        </ul>
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={'algolia-index'}
+          searchState={searchState}
+          onSearchStateChange={handleSearchStateChange}
+        >
+          <SearchBox />
+          <Hits hitComponent={Hit} />
+        </InstantSearch>
       </main>
 
       <Footer />
