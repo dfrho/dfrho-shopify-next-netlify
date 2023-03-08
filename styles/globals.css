@@ -372,3 +372,8 @@ main {
   margin: 0.5rem 0;
   font-weight: 700;
 }
+ol.ais-Hits-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

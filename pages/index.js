@@ -7,8 +7,6 @@ import { getProductList } from 'netlify/functions/utils/getProductList.js';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 import searchClient from '../algolia';
 
-const index = searchClient.initIndex('algolia-index');
-
 function Hit({ hit }) {
   return <HitListing hit={hit} />;
 }
