@@ -87,6 +87,10 @@ export const MessageBody = ({ product }) => {
   };
 
   const handleSubmit = async ({ message, product }) => {
+    console.log(
+      '🚀 ~ file: MessageBody.js:90 ~ handleSubmit ~ product:',
+      product
+    );
     setDisabled(true);
     setMessage(() =>
       message
