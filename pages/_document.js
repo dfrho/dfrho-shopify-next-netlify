@@ -16,13 +16,19 @@ class MyDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                algoliasearchNetlify({
-                  appId: '30UDJGPUBP',
-                  apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
-                  siteId: '9f739a59-c001-4005-8110-306032c23340',
-                  branch: process.env.HEAD,
-                  selector: 'div#search',
-                });
+                ${
+                  typeof window === 'undefined'
+                    ? `
+                      algoliasearchNetlify({
+                        appId: '30UDJGPUBP',
+                        apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+                        siteId: '9f739a59-c001-4005-8110-306032c23340',
+                        branch: process.env.HEAD,
+                        selector: 'div#search',
+                      });
+                    `
+                    : ''
+                }
               `,
             }}
           />

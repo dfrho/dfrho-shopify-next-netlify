@@ -86,18 +86,12 @@ export const MessageBody = ({ product }) => {
     );
   };
 
-  const handleSubmit = async ({ message, product }) => {
+  const handleSubmit = async ({ message }) => {
     console.log(
       '🚀 ~ file: MessageBody.js:90 ~ handleSubmit ~ product:',
       product
     );
     setDisabled(true);
-    setMessage(() =>
-      message
-        .replace(/^([\n]*)/g, '')
-        .replace(/([\n]*)$/g, '')
-        .trim()
-    );
 
     const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
