@@ -6,7 +6,7 @@ const Bubble = styled.div`
   max-width: 60%;
   min-width: 4rem;
   padding: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   break-word: break-word;
   animation-duration: 0.5s;
   animation-fill-mode: both;
@@ -26,13 +26,16 @@ export const Message = ({ message }) => {
   return (
     <>
       <Bubble>
-        {messageLines &&
-          messageLines.map((line, i) => (
-            <span key={i}>
-              {line}
-              <br />
-            </span>
-          ))}
+        <>
+          <h3>Your Workout</h3>
+          {messageLines &&
+            messageLines.map((line, i) => (
+              <span key={i}>
+                {line}
+                <br />
+              </span>
+            ))}
+        </>
       </Bubble>
     </>
   );

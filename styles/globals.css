@@ -52,11 +52,6 @@ button {
     Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
   transition: all 0.3s ease;
 }
-button:hover {
-  background: #000;
-  border: 1px solid #000;
-  color: #fff;
-}
 hr {
   border-top: 1px solid #eee;
   margin: 30px 0;
