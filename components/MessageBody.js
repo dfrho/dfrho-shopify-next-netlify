@@ -79,18 +79,13 @@ export const MessageBody = ({ product }) => {
   const [disabled, setDisabled] = useState(false);
 
   const handleSelectChange = (event) => {
+    event.preventDefault();
+
     setWorkoutType(event.target.value);
-    console.log(
-      '🚀 ~ file: MessageBody.js:69 ~ handleSelectChange ~ event.target.value:',
-      event.target.value
-    );
   };
 
-  const handleSubmit = async ({ message }) => {
-    console.log(
-      '🚀 ~ file: MessageBody.js:90 ~ handleSubmit ~ product:',
-      product
-    );
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setDisabled(true);
 
     const response = await fetch('/.netlify/functions/queryopenai', {
@@ -98,7 +93,6 @@ export const MessageBody = ({ product }) => {
       body: JSON.stringify({ workoutType, product }),
     });
     const data = await response.json();
-    console.log('🚀 ~ file: MessageBody.js:90 ~ onNewMessage ~ data:', data);
 
     setWorkoutPlan(() =>
       data.result
@@ -107,11 +101,11 @@ export const MessageBody = ({ product }) => {
         .trim()
     );
 
-    setDisabled(false);
     console.log(
-      '🚀 ~ file: MessageBody.js:119 ~ handleSubmit ~ workoutPlan:',
+      '🚀 ~ file: MessageBody.js:106 ~ handleSubmit ~ workoutPlan:',
       workoutPlan
     );
+    setDisabled(false);
   };
 
   return (
