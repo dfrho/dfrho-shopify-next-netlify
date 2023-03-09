@@ -96,8 +96,8 @@ export const MessageBody = ({ product }) => {
 
     setWorkoutPlan(() =>
       data.result
-        .replace(/^([\n]*)/g, '')
-        .replace(/([\n]*)$/g, '')
+        // .replace(/^([\n]*)/g, '')
+        // .replace(/([\n]*)$/g, '')
         .trim()
     );
 
