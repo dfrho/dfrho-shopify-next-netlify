@@ -88,14 +88,12 @@ export const MessageBody = ({ product }) => {
 
   const handleSubmit = async ({ message, product }) => {
     setDisabled(true);
-    setMessage(() => [
-      {
-        text: message
-          .replace(/^([\n]*)/g, '')
-          .replace(/([\n]*)$/g, '')
-          .trim(),
-      },
-    ]);
+    setMessage(() =>
+      message
+        .replace(/^([\n]*)/g, '')
+        .replace(/([\n]*)$/g, '')
+        .trim()
+    );
 
     const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
@@ -104,14 +102,12 @@ export const MessageBody = ({ product }) => {
     const data = await response.json();
     console.log('🚀 ~ file: MessageBody.js:90 ~ onNewMessage ~ data:', data);
 
-    setWorkoutPlan(() => [
-      {
-        text: data.result
-          .replace(/^([\n]*)/g, '')
-          .replace(/([\n]*)$/g, '')
-          .trim(),
-      },
-    ]);
+    setWorkoutPlan(() =>
+      data.result
+        .replace(/^([\n]*)/g, '')
+        .replace(/([\n]*)$/g, '')
+        .trim()
+    );
 
     setDisabled(false);
     console.log(
