@@ -170,6 +170,10 @@ export default function ProductPageContent({ product }) {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
+    console.log(
+      '🚀 ~ file: ProductPageContent.js:176 ~ openModal ~ product:',
+      product
+    );
     setShowModal(true);
   };
 

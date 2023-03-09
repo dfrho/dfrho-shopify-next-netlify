@@ -73,8 +73,8 @@ const BarContainer = styled.div`
 `;
 
 export const MessageBody = ({ product }) => {
-  const [message, setMessage] = useState({});
-  const [workoutPlan, setWorkoutPlan] = useState({});
+  const [message, setMessage] = useState('');
+  const [workoutPlan, setWorkoutPlan] = useState('');
   const [workoutType, setWorkoutType] = useState(null);
   const [disabled, setDisabled] = useState(false);
 
@@ -86,7 +86,7 @@ export const MessageBody = ({ product }) => {
     );
   };
 
-  const handleSubmit = async (message) => {
+  const handleSubmit = async ({ message, product }) => {
     setDisabled(true);
     setMessage(() => [
       {

@@ -3,7 +3,6 @@ import ProductPageContent from '@components/ProductPageContent';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import { getProductList } from '@api/getProductList';
-import { MessageBody } from '../../components/MessageBody';
 
 export default function ProductPage({ product }) {
   return (
