@@ -75,7 +75,7 @@ const BarContainer = styled.div`
 export const MessageBody = ({ product }) => {
   const [message, setMessage] = useState('');
   const [workoutPlan, setWorkoutPlan] = useState('');
-  const [workoutType, setWorkoutType] = useState(null);
+  const [workoutType, setWorkoutType] = useState('HIIT');
   const [disabled, setDisabled] = useState(false);
 
   const handleSelectChange = (event) => {

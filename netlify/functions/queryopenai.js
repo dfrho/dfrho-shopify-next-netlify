@@ -2,10 +2,6 @@ const fetch = require('isomorphic-fetch');
 
 exports.handler = async (event) => {
   const { workoutType, product } = JSON.parse(event.body);
-  console.log(
-    '🚀 ~ file: queryopenai.js:5 ~ exports.handler= ~ product:',
-    product
-  );
 
   const query = `LifeFitness is a leading manufacturer of commercial fitness equipment that can be used at home for Performance, HIIT, Strength, Cardio, and Endurance workouts. For the ${product} product, show me a ${workoutType} workout.`;
   console.log('🚀 ~ file: queryopenai.js:8 ~ exports.handler= ~ query:', query);
