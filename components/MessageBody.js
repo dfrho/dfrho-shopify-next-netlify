@@ -25,11 +25,10 @@ const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   z-index: 999;
 
   & .modal-content {
@@ -43,9 +42,6 @@ const ModalContainer = styled.div`
   }
 
   & .close-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
     background-color: transparent;
     border: none;
     font-size: 1.5rem;
