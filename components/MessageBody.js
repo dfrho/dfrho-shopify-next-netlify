@@ -2,8 +2,23 @@ import React from 'react';
 import { useState } from 'react';
 import MessageBar from './MessageBar';
 import { Message } from './Message';
-// import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch';
 import styled from 'styled-components';
+
+const MessageBarContainer = styled.div`
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: ${({ hasFocus }) => (hasFocus ? '90%' : '100%')};
+  position: ${({ hasFocus }) => (hasFocus ? 'absolute' : 'relative')};
+  bottom: 0;
+
+  @media screen and (max-width: 480px) {
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+`;
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -60,8 +75,8 @@ const BarContainer = styled.div`
 export const MessageBody = ({ product }) => {
   const [message, setMessage] = useState({});
   const [workoutPlan, setWorkoutPlan] = useState({});
-  const [loading, setLoading] = useState(false);
   const [workoutType, setWorkoutType] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const handleSelectChange = (event) => {
     setWorkoutType(event.target.value);
@@ -71,7 +86,8 @@ export const MessageBody = ({ product }) => {
     );
   };
 
-  const onNewMessage = async (message) => {
+  const handleSubmit = async (message) => {
+    setDisabled(true);
     setMessage(() => [
       {
         text: message
@@ -80,7 +96,6 @@ export const MessageBody = ({ product }) => {
           .trim(),
       },
     ]);
-    setLoading(true);
 
     const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
@@ -97,18 +112,31 @@ export const MessageBody = ({ product }) => {
           .trim(),
       },
     ]);
-    setLoading(false);
+
+    setDisabled(false);
+    console.log(
+      '🚀 ~ file: MessageBody.js:119 ~ handleSubmit ~ workoutPlan:',
+      workoutPlan
+    );
   };
 
   return (
     <ModalContainer>
       <Container>
         <HistoryContainer>
-          <MessageBar
-            handleSelectChange={handleSelectChange}
-            onNewMessage={onNewMessage}
-            disabled={loading}
-          />
+          <form onSubmit={handleSubmit}>
+            <select onChange={handleSelectChange}>
+              <option value="HIIT">HIIT</option>
+              <option value="Cardio">Cardio</option>
+              <option value="Performance">Performance</option>
+              <option value="Endurance">Endurance</option>
+              <option value="Flexibility">Flexibility</option>
+              <option value="Strength">Strength</option>
+            </select>
+            <button type="submit" disabled={disabled}>
+              Send
+            </button>
+          </form>
           <Message message={message ? message : ''} />
         </HistoryContainer>
       </Container>
