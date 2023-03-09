@@ -131,10 +131,10 @@ export default function ProductPageContent({ product }) {
             </button>
           )}
         </div>
+        {showModal && (
+          <MessageBody onClose={closeModal} product={product.title} />
+        )}
       </section>
-      {showModal && (
-        <MessageBody onClose={closeModal} product={product.title} />
-      )}
     </>
   );
 }
