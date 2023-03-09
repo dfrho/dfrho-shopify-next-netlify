@@ -125,7 +125,7 @@ export const MessageBody = ({ product }) => {
               Send
             </button>
           </form>
-          <Message message={message ? message : ''} />
+          <Message message={workoutPlan ? workoutPlan : ''} />
         </HistoryContainer>
       </Container>
     </ModalContainer>
