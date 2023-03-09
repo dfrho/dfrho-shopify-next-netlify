@@ -33,7 +33,7 @@ export default function Home({ products }) {
           searchState={searchState}
           onSearchStateChange={handleSearchStateChange}
         >
-          <div className="ais-SearchBox">
+          <div className="ais-SearchBox" id="search">
             <SearchBox />
           </div>
           <Hits hitComponent={Hit} />
