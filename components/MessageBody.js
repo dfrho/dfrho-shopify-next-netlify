@@ -29,6 +29,7 @@ const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   z-index: 999;
 
   & .modal-content {
@@ -153,9 +154,7 @@ export const MessageBody = ({ product }) => {
             <button className="close-btn" onClick={handleCloseModal}>
               &times;
             </button>
-            <HistoryContainer>
-              <Message message={workoutPlan ? workoutPlan : ''} />
-            </HistoryContainer>
+            <Message message={workoutPlan ? workoutPlan : ''} />
           </div>
         </ModalContainer>
       )}
