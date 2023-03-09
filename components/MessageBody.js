@@ -6,12 +6,10 @@ import styled from 'styled-components';
 
 const MessageBarContainer = styled.div`
   display: flex;
-  padding: 1rem;
-  justify-content: center;
+  padding: 1rem 1rem 1rem 0;
   align-items: center;
-  width: ${({ hasFocus }) => (hasFocus ? '90%' : '100%')};
-  position: ${({ hasFocus }) => (hasFocus ? 'absolute' : 'relative')};
-  bottom: 0;
+  width: 100%;
+  position: relative;
 
   @media screen and (max-width: 480px) {
     padding: 0.5rem;
@@ -133,7 +131,7 @@ export const MessageBody = ({ product }) => {
 
   return (
     <>
-      <MessageBarContainer hasFocus={showModal}>
+      <MessageBarContainer>
         <WorkoutTypeHeader>Choose a workout type:</WorkoutTypeHeader>
         <form onSubmit={handleSubmit}>
           <select onChange={handleSelectChange}>

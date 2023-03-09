@@ -67,16 +67,6 @@ export default function ProductPageContent({ product }) {
 
   let image = product.images.edges[0].node;
 
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
   let handleAddToCart = async () => {
     console.log('--- Adding to cart ---');
 
@@ -123,16 +113,13 @@ export default function ProductPageContent({ product }) {
           {product.totalInventory > 0 ? (
             <>
               <button onClick={handleAddToCart}>Add to Cart</button>
-              <button onClick={openModal}>Plan Workout</button>
             </>
           ) : (
             <button className="disabled" disabled>
               Out of Stock
             </button>
           )}
-          {showModal && (
-            <MessageBody onClose={closeModal} product={product.title} />
-          )}
+          <MessageBody product={product.title} />
         </div>
       </section>
     </>
