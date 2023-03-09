@@ -40,7 +40,6 @@ const ModalContainer = styled.div`
   }
 
   & .close-btn {
-    background-color: transparent;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
