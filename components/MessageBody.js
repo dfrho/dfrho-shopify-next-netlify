@@ -6,15 +6,62 @@ import styled from 'styled-components';
 
 const MessageBarContainer = styled.div`
   display: flex;
-  padding: 1rem 1rem 1rem 0;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   width: 100%;
   position: relative;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 1rem;
 
   @media screen and (max-width: 480px) {
     padding: 0.5rem;
     max-width: 100%;
   }
+`;
+
+const FormContainer = styled.div`
+  flex: 1;
+
+  & > form {
+    display: flex;
+    align-items: center;
+
+    & > select {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-right: 1rem;
+    }
+
+    & > button {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #3e8e41;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+`;
+
+const WorkoutTypeHeader = styled.h2`
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ModalContainer = styled.div`
@@ -87,12 +134,7 @@ const BarContainer = styled.div`
   }
 `;
 
-const WorkoutTypeHeader = styled.h2`
-  margin-bottom: 1rem;
-`;
-
 export const MessageBody = ({ product }) => {
-  const [message, setMessage] = useState('');
   const [workoutPlan, setWorkoutPlan] = useState('');
   const [workoutType, setWorkoutType] = useState('HIIT');
   const [disabled, setDisabled] = useState(false);
@@ -113,12 +155,7 @@ export const MessageBody = ({ product }) => {
     });
     const data = await response.json();
 
-    setWorkoutPlan(() =>
-      data.result
-        // .replace(/^([\n]*)/g, '')
-        // .replace(/([\n]*)$/g, '')
-        .trim()
-    );
+    setWorkoutPlan(() => data.result.trim());
 
     setShowModal(true);
     setDisabled(false);
@@ -132,20 +169,24 @@ export const MessageBody = ({ product }) => {
   return (
     <>
       <MessageBarContainer>
-        <WorkoutTypeHeader>Choose a workout type:</WorkoutTypeHeader>
-        <form onSubmit={handleSubmit}>
-          <select onChange={handleSelectChange}>
-            <option value="HIIT">HIIT</option>
-            <option value="Cardio">Cardio</option>
-            <option value="Performance">Performance</option>
-            <option value="Endurance">Endurance</option>
-            <option value="Flexibility">Flexibility</option>
-            <option value="Strength">Strength</option>
-          </select>
-          <button type="submit" disabled={disabled}>
-            Get Workout
-          </button>
-        </form>
+        <WorkoutTypeHeader>
+          {`Choose a workout type for the ${product}`}:
+        </WorkoutTypeHeader>
+        <FormContainer>
+          <form onSubmit={handleSubmit}>
+            <select onChange={handleSelectChange}>
+              <option value="HIIT">HIIT</option>
+              <option value="Cardio">Cardio</option>
+              <option value="Performance">Performance</option>
+              <option value="Endurance">Endurance</option>
+              <option value="Flexibility">Flexibility</option>
+              <option value="Strength">Strength</option>
+            </select>
+            <button type="submit" disabled={disabled}>
+              Get Workout
+            </button>
+          </form>
+        </FormContainer>
       </MessageBarContainer>
       {showModal && (
         <ModalContainer>
