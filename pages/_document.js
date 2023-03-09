@@ -13,7 +13,7 @@ class MyDocument extends Document {
             type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"
           ></script>
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
                 ${
@@ -31,7 +31,7 @@ class MyDocument extends Document {
                 }
               `,
             }}
-          />
+          /> */}
         </Head>
         <body>
           <Main />
