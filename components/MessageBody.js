@@ -75,7 +75,7 @@ const BarContainer = styled.div`
 export const MessageBody = ({ product }) => {
   const [message, setMessage] = useState('');
   const [workoutPlan, setWorkoutPlan] = useState('');
-  const [workoutType, setWorkoutType] = useState(null);
+  const [workoutType, setWorkoutType] = useState('HIIT');
   const [disabled, setDisabled] = useState(false);
 
   const handleSelectChange = (event) => {
@@ -86,20 +86,22 @@ export const MessageBody = ({ product }) => {
     );
   };
 
-  const handleSubmit = async ({ message, product }) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setDisabled(true);
-    setMessage(() => [
-      {
-        text: message
-          .replace(/^([\n]*)/g, '')
-          .replace(/([\n]*)$/g, '')
-          .trim(),
-      },
-    ]);
+    // setMessage(() =>
+    //   message
+    //     .replace(/^([\n]*)/g, '')
+    //     .replace(/([\n]*)$/g, '')
+    //     .trim()
+    // );
+    const query = `LifeFitness is a leading manufacturer of commercial fitness equipment that can be used at home for Performance, HIIT, Strength, Cardio, and Endurance workouts. For the ${product} product, show me a ${workoutType} workout.`;
+
+    console.log('🚀 ~ file: MessageBody.js:100 ~ handleSubmit ~ query:', query);
 
     const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
-      body: JSON.stringify({ workoutType, product }),
+      body: JSON.stringify({ query }),
     });
     const data = await response.json();
     console.log('🚀 ~ file: MessageBody.js:90 ~ onNewMessage ~ data:', data);
@@ -137,7 +139,7 @@ export const MessageBody = ({ product }) => {
               Send
             </button>
           </form>
-          <Message message={message ? message : ''} />
+          {/* <Message message={message ? message : ''} /> */}
         </HistoryContainer>
       </Container>
     </ModalContainer>
