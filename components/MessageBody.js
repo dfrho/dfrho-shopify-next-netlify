@@ -75,49 +75,37 @@ const BarContainer = styled.div`
 export const MessageBody = ({ product }) => {
   const [message, setMessage] = useState('');
   const [workoutPlan, setWorkoutPlan] = useState('');
-  const [workoutType, setWorkoutType] = useState(null);
+  const [workoutType, setWorkoutType] = useState('HIIT');
   const [disabled, setDisabled] = useState(false);
 
   const handleSelectChange = (event) => {
+    event.preventDefault();
+
     setWorkoutType(event.target.value);
-    console.log(
-      '🚀 ~ file: MessageBody.js:69 ~ handleSelectChange ~ event.target.value:',
-      event.target.value
-    );
   };
 
-  const handleSubmit = async ({ message, product }) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setDisabled(true);
-    setMessage(() => [
-      {
-        text: message
-          .replace(/^([\n]*)/g, '')
-          .replace(/([\n]*)$/g, '')
-          .trim(),
-      },
-    ]);
 
     const response = await fetch('/.netlify/functions/queryopenai', {
       method: 'POST',
       body: JSON.stringify({ workoutType, product }),
     });
     const data = await response.json();
-    console.log('🚀 ~ file: MessageBody.js:90 ~ onNewMessage ~ data:', data);
 
-    setWorkoutPlan(() => [
-      {
-        text: data.result
-          .replace(/^([\n]*)/g, '')
-          .replace(/([\n]*)$/g, '')
-          .trim(),
-      },
-    ]);
+    setWorkoutPlan(() =>
+      data.result
+        // .replace(/^([\n]*)/g, '')
+        // .replace(/([\n]*)$/g, '')
+        .trim()
+    );
 
-    setDisabled(false);
     console.log(
-      '🚀 ~ file: MessageBody.js:119 ~ handleSubmit ~ workoutPlan:',
+      '🚀 ~ file: MessageBody.js:106 ~ handleSubmit ~ workoutPlan:',
       workoutPlan
     );
+    setDisabled(false);
   };
 
   return (
@@ -137,7 +125,7 @@ export const MessageBody = ({ product }) => {
               Send
             </button>
           </form>
-          <Message message={message ? message : ''} />
+          <Message message={workoutPlan ? workoutPlan : ''} />
         </HistoryContainer>
       </Container>
     </ModalContainer>
