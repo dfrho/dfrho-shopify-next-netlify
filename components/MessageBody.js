@@ -89,6 +89,10 @@ const BarContainer = styled.div`
   }
 `;
 
+const WorkoutTypeHeader = styled.h2`
+  margin-bottom: 1rem;
+`;
+
 export const MessageBody = ({ product }) => {
   const [message, setMessage] = useState('');
   const [workoutPlan, setWorkoutPlan] = useState('');
@@ -130,6 +134,7 @@ export const MessageBody = ({ product }) => {
   return (
     <>
       <MessageBarContainer hasFocus={showModal}>
+        <WorkoutTypeHeader>Choose a workout type:</WorkoutTypeHeader>
         <form onSubmit={handleSubmit}>
           <select onChange={handleSelectChange}>
             <option value="HIIT">HIIT</option>
@@ -140,7 +145,7 @@ export const MessageBody = ({ product }) => {
             <option value="Strength">Strength</option>
           </select>
           <button type="submit" disabled={disabled}>
-            Send
+            Get Workout
           </button>
         </form>
       </MessageBarContainer>
