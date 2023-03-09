@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import MessageBar from './MessageBar';
 import { Message } from './Message';
 import fetch from 'isomorphic-fetch';
 import styled from 'styled-components';
@@ -26,10 +25,31 @@ const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
+
+  & .modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    position: relative;
+  }
+
+  & .close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 `;
 
 const Container = styled.div`
@@ -77,10 +97,10 @@ export const MessageBody = ({ product }) => {
   const [workoutPlan, setWorkoutPlan] = useState('');
   const [workoutType, setWorkoutType] = useState('HIIT');
   const [disabled, setDisabled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSelectChange = (event) => {
     event.preventDefault();
-
     setWorkoutType(event.target.value);
   };
 
@@ -101,33 +121,44 @@ export const MessageBody = ({ product }) => {
         .trim()
     );
 
-    console.log(
-      '🚀 ~ file: MessageBody.js:106 ~ handleSubmit ~ workoutPlan:',
-      workoutPlan
-    );
+    setShowModal(true);
     setDisabled(false);
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setWorkoutPlan('');
+  };
+
   return (
-    <ModalContainer>
-      <Container>
-        <HistoryContainer>
-          <form onSubmit={handleSubmit}>
-            <select onChange={handleSelectChange}>
-              <option value="HIIT">HIIT</option>
-              <option value="Cardio">Cardio</option>
-              <option value="Performance">Performance</option>
-              <option value="Endurance">Endurance</option>
-              <option value="Flexibility">Flexibility</option>
-              <option value="Strength">Strength</option>
-            </select>
-            <button type="submit" disabled={disabled}>
-              Send
+    <>
+      <MessageBarContainer hasFocus={showModal}>
+        <form onSubmit={handleSubmit}>
+          <select onChange={handleSelectChange}>
+            <option value="HIIT">HIIT</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Performance">Performance</option>
+            <option value="Endurance">Endurance</option>
+            <option value="Flexibility">Flexibility</option>
+            <option value="Strength">Strength</option>
+          </select>
+          <button type="submit" disabled={disabled}>
+            Send
+          </button>
+        </form>
+      </MessageBarContainer>
+      {showModal && (
+        <ModalContainer>
+          <div className="modal-content">
+            <button className="close-btn" onClick={handleCloseModal}>
+              &times;
             </button>
-          </form>
-          <Message message={workoutPlan ? workoutPlan : ''} />
-        </HistoryContainer>
-      </Container>
-    </ModalContainer>
+            <HistoryContainer>
+              <Message message={workoutPlan ? workoutPlan : ''} />
+            </HistoryContainer>
+          </div>
+        </ModalContainer>
+      )}
+    </>
   );
 };
