@@ -13,7 +13,7 @@ class MyDocument extends Document {
             type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"
           ></script>
-          {/* <script
+          <script
             dangerouslySetInnerHTML={{
               __html: `
                 ${
@@ -21,7 +21,7 @@ class MyDocument extends Document {
                     ? `
                       algoliasearchNetlify({
                         appId: '30UDJGPUBP',
-                        apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+                        apiKey: NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
                         siteId: '9f739a59-c001-4005-8110-306032c23340',
                         branch: process.env.HEAD,
                         selector: 'div#search',
@@ -31,7 +31,7 @@ class MyDocument extends Document {
                 }
               `,
             }}
-          /> */}
+          />
         </Head>
         <body>
           <Main />
