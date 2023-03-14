@@ -5,13 +5,7 @@ export default function HitListing({ hit }) {
   return (
     <article className="product-card">
       <div className="product-card-frame">
-        <Image
-          className="prodimg"
-          src={hit['Image Src']}
-          alt={hit['Title']}
-          width={500}
-          height={300}
-        />
+        <img className="prodimg" src={image.src} alt={image.altText} />
       </div>
       <div className="product-card-text">
         <h3 className="product-card-title">{hit['Title']}</h3>
