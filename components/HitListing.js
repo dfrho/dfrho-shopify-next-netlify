@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function HitListing({ hit }) {
+  let image = hit.images.edges[0].node;
   return (
     <article className="product-card">
       <div className="product-card-frame">
