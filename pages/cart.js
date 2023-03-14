@@ -15,7 +15,7 @@ export default function CartPage() {
       <Header />
       <main className="cart-page">
         <article className="cart-page-content">
-          <h1>Your Life Fitness cart</h1>
+          <h1>Your cart</h1>
           <Cart />
         </article>
       </main>
