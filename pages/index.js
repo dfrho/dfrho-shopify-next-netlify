@@ -21,7 +21,7 @@ export default function Home({ products }) {
   return (
     <>
       <Head>
-        <title>Life Fitness Shop</title>
+        <title>Life Fitness Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

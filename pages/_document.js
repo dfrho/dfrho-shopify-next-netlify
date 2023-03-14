@@ -10,7 +10,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css"
           />
-          <Script src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></Script>
+          <Script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"
+          ></Script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
