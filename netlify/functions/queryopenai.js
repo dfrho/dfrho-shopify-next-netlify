@@ -3,7 +3,7 @@ const fetch = require('isomorphic-fetch');
 exports.handler = async (event) => {
   const { workoutType, product } = JSON.parse(event.body);
 
-  const query = `LifeFitness is a leading manufacturer of commercial fitness equipment that can be used at home for Performance, HIIT, Strength, Cardio, and Endurance workouts. For the ${product} product, show me a ${workoutType} workout.`;
+  const query = `Life Fitness is a leading manufacturer of commercial fitness equipment that can be used at home for Performance, HIIT, Strength, Cardio, and Endurance workouts. For the ${product} product, show me a ${workoutType} workout.`;
 
   const DEFAULT_PARAMS = {
     model: 'text-davinci-002',

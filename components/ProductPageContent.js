@@ -65,6 +65,10 @@ export default function ProductPageContent({ product }) {
     setCost(formatPrice(variantPrice * quantity));
   }, [chosenVariant, quantity, cost, vars]);
 
+  console.log(
+    '🚀 ~ file: ProductPageContent.js:69 ~ ProductPageContent ~ product:',
+    product
+  );
   let image = product.images.edges[0].node;
 
   let handleAddToCart = async () => {
