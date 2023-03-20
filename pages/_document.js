@@ -22,7 +22,7 @@ class MyDocument extends Document {
                     ? `
                       algoliasearchNetlify({
                         appId: '30UDJGPUBP',
-                        apiKey: NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+                        apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
                         siteId: '9f739a59-c001-4005-8110-306032c23340',
                         branch: process.env.HEAD,
                         selector: 'div#search',
