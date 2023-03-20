@@ -5,7 +5,7 @@ import Header from '@components/Header';
 import Footer from '@components/Footer';
 import { getProductList } from '@api/getProductList.js';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
-import searchClient from '../algolia';
+import searchClient from '../netlify/functions/algolia';
 
 function Hit({ hit }) {
   return <HitListing hit={hit} />;
