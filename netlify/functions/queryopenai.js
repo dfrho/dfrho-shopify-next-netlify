@@ -18,8 +18,7 @@ exports.handler = async (event) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization:
-        'Bearer ' + process.env.NEXT_PUBLIC_REACT_APP_OPEN_AI_API_KEY,
+      Authorization: 'Bearer ' + process.env.REACT_APP_OPEN_AI_API_KEY,
     },
     body: JSON.stringify(params_),
   };
